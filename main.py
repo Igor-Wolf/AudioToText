@@ -41,7 +41,10 @@ pipe = pipeline(
 )
 
 @app.post("/create-text")
-def create_audio(audio_to_convert: UploadFile = File(...)):
+# def create_audio(audio_to_convert: UploadFile = File(...)):
+def create_audio(
+      audio_to_convert: UploadFile = File(...)
+):
     audio_bytes = audio_to_convert.file.read()
     # result = pipe(audio_bytes)
     result = pipe(audio_bytes, return_timestamps=True)
